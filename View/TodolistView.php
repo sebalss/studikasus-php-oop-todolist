@@ -33,18 +33,36 @@ namespace View{
                 }elseif ($pilihan == "x"){
                     break;
                 }else{
-                    echo "menu tidak tersedia" .PHP_EOL;
+                    echo "Menu Tidak Tersedia" .PHP_EOL;
                 }
 
             }
+
+            echo "Good Bye";
         }
 
         function addTodoList(): void{
+            echo "MENAMBAH TODO" . PHP_EOL;
 
+            $todo = InputHelper::input("Todo (x untuk batal) ");
+
+            if ($todo == "x"){
+                echo "Batal Menambahkan Todo" . PHP_EOL;
+            }else{
+                $this->todolistService->addTodolist($todo);
+            }
         }
 
         function removeTodoList(): void{
+            echo "MENGHAPUS TODO" . PHP_EOL;
 
+            $pilihan = InputHelper::input("Nomor (x untuk batal)");
+
+            if ($pilihan == "x") {
+                echo "Batal Menghapus Todo" . PHP_EOL;
+            }else{
+                $this->todolistService->removeTodoList($pilihan);
+            }
         }
     }
 }
