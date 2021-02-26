@@ -16,7 +16,6 @@ namespace Service{
     }
 
     class TodolistServiceImpl implements TodolistService{
-
         private TodolistRepository $todolistRepository;
 
         public function __construct(TodolistRepository $todolistRepository)
@@ -29,7 +28,7 @@ namespace Service{
             echo "TODOLIST". PHP_EOL;
             $todolist = $this->todolistRepository->findAll();
             foreach ($todolist as $number => $value){
-                echo "$number. $value". PHP_EOL;
+                echo "$number. ". $value->getTodo() . PHP_EOL;
             }
         }
 
@@ -42,7 +41,11 @@ namespace Service{
 
         public function removeTodolist(int $number): void
         {
-            // TODO: Implement RemoveTodolist() method.
+            if ($this->todolistRepository->remove($number)){
+                echo "Todo berhasil dihapus" . PHP_EOL;
+            }else{
+                echo "Todo Gagal dihapus" . PHP_EOL;
+            }
         }
     }
 

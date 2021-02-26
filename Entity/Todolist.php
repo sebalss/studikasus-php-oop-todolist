@@ -5,8 +5,8 @@ namespace Entity{
 
         private string $todo;
 
-        public function __constructor(string $todo = ""){
-            $this->todo;
+        public function __construct(string $todo = ""){
+            $this->todo = $todo;
         }
 
         public function getTodo(): string
@@ -14,7 +14,7 @@ namespace Entity{
             return $this->todo;
         }
 
-        public function setTodo(string $todo)
+        public function setTodo(string $todo): void
         {
             $this->todo = $todo;
         }
